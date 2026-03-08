@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub | Login</title>
+
+    <!-- Daisy UI + Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: "Geist", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="h-[100vh] sm:h-[88vh] max-w-[520px] bg-white shadow-[0_10px_15px_rgba(0,0,0,0.2)] mx-auto my-14">
+
+    <section class="p-8">
+        <!-- Login Banner Section -->
+        <div>
+            <img class="w-[90px] mx-auto" src="assets/github-logo.png" alt="">
+            <h1 class="text-center mt-6 text-[24px] font-semibold">GitHub Issues Tracker</h1>
+            <p class="text-center text-[#64748B] text-[16px] font-normal">Sign in to manage your issues</p>
+        </div>
+
+        <!-- Login Form Section  -->
+
+        <div>
+
+            <div class="card-body">
+                <fieldset class="fieldset">
+                    <label class="label text-[#3D3746] text-[16px] font-medium">Username</label>
+                    <input id="user-id" type="text" class="input w-full" placeholder="Enter Username" />
+                    <br>
+                    <label class="label text-[#3D3746] text-[16px] font-medium">Password</label>
+                    <input id="input-pin" type="password" maxlength="9" class="input w-full" placeholder="Enter Password" />
+                    <br>
+                    <button id="sign-in-btn" class="btn btn-primary mt-4">Sign In</button>
+                </fieldset>
+            </div>
+
+        </div>
+
+
+
+        <!-- Login Footer Section -->
+        <div>
+            <div class="flex items-center gap-3">
+                <hr class="flex-grow border-[#E4E4E7]">
+                <span class="text-[#1F2937] font-normal">OR</span>
+                <hr class="flex-grow border-[#E4E4E7]">
+            </div>
+            <br>
+            <div>
+                <p class="text-[14px] font-normal text-[#64748B] text-center mt-">Demo Credentials:</p>
+                <br>
+                <div class="bg-[#F8FAFC] text-center py-6  rounded-xl">
+                    <p class="text-[16px] text-[#1F2937]"><span class="font-semibold">Username:</span> admin</p>
+                    <p class="text-[16px] text-[#1F2937]"><span class="font-semibold">
+                    Password:</span> admin123</p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+<script src="login.js"></script>
+</body>
+
+</html>
