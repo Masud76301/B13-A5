@@ -45,10 +45,10 @@
     <main class="mt-14 container mx-auto">
         <!-- Tab Section -->
         <section>
-            <div class="bg-base-100 shadow-[0_1px_6px_rgba(0,0,0,0.20)] p-6 space-x-2 rounded-lg">
-                <button class="btn btn-primary text-[16px] w-[120px]">All</button>
-                <button class="btn text-[16px] w-[120px]">Open</button>
-                <button class="btn text-[16px] w-[120px]">Closed</button>
+            <div id="tab-btn" class="bg-base-100 shadow-[0_1px_6px_rgba(0,0,0,0.20)] p-6 space-x-2 rounded-lg">
+                <button onclick="selectBtn('allBtn')" id="allBtn" class="btn btn-primary text-[16px] w-[120px]">All</button>
+                <button onclick="selectBtn('openBtn')" id="openBtn" class="btn text-[16px] w-[120px]">Open</button>
+                <button onclick="selectBtn('closedBtn')" id="closedBtn" class="btn text-[16px] w-[120px]">Closed</button>
             </div>
         </section>
 
@@ -76,7 +76,8 @@
             </div>
 
             <!-- Issues Cards -->
-            <div id="issue-cards" class="bg-[#FBFBFB] shadow-[0_1px_4px_rgba(0,0,0,0.25)] p-6 rounded-b-lg grid  grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4 ">
+            <div id="issue-cards"
+                class="bg-[#FBFBFB] shadow-[0_1px_4px_rgba(0,0,0,0.25)] p-6 rounded-b-lg grid  grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4 ">
 
                 <!-- card -->
                 <div class="shadow-md rounded-lg border-t-3 border-t-green-500 ">
@@ -84,7 +85,7 @@
                     <div class="p-4 space-y-4">
                         <!-- Priority -->
                         <div class="flex items-center justify-between">
-                            <img class="w-[24px]" src="assets/Open-Status.png" alt="">
+                            <img class="w-[24px]" src="assets/Closed- Status .png" alt="">
                             <h1
                                 class="bg-error/10 text-red-500 w-[80px] h-[24px] text-[12px] p-1 text-center rounded-3xl">
                                 HIGH</h1>
@@ -120,15 +121,18 @@
                     </div>
                 </div>
 
-               
-
-
+                
             </div>
+
+            <!-- Loading Spinner -->
+                <div id="load-spinner" class="hidden justify-center ite">
+                    <span class="loading loading-bars loading-xl"></span>
+                </div>
         </section>
     </main>
 
 
-<script src="issue.js"></script>
+    <script src="issue.js"></script>
 </body>
 
 </html>
