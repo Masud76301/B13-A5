@@ -1,18 +1,19 @@
 const issueCards = document.getElementById('issue-cards');
 const loadingSpinner = document.getElementById('load-spinner');
+const issuesCount = document.getElementById('issues-count');
 
-showLoading =()=>{
-   loadingSpinner.classList.remove("hidden");  
-   loadingSpinner.classList.add("flex"); 
-    issueCards.innerHTML="";
- }
-hideLoading = () =>{
-    loadingSpinner.classList.add("hidden"); 
+showLoading = () => {
+    loadingSpinner.classList.remove("hidden");
+    loadingSpinner.classList.add("flex");
+    issueCards.innerHTML = "";
+}
+hideLoading = () => {
+    loadingSpinner.classList.add("hidden");
 }
 
 selectBtn = (id) => {
     const btn = document.getElementById(id);
-  
+
 
     const tabBtn = document.querySelectorAll('#tab-btn button');
     tabBtn.forEach(btn => {
@@ -20,14 +21,18 @@ selectBtn = (id) => {
     });
     btn.classList.add("btn-primary");
 
-    if(id =="allBtn"){
-        loadIssues ();
+    if (id == "allBtn") {
+        loadIssues();
+
+
     }
-     else if (id=="openBtn"){
+    else if (id == "openBtn") {
         openIssues();
+     
     }
-    else{
+    else {
         closedIssues();
+ 
     }
 }
 
@@ -37,14 +42,17 @@ selectBtn = (id) => {
 
 
 const loadIssues = async () => {
-   showLoading();
+    showLoading();
     const url = "https://phi-lab-server.vercel.app/api/v1/lab/issues";
     const res = await fetch(url);
     const data = await res.json();
     loadingSpinner.classList.add("hidden");
     hideLoading();
     displayIssues(data.data);
-    
+    const count = issueCards.children.length;
+    issuesCount.innerText = count;
+
+
 }
 
 const openIssues = async () => {
@@ -53,8 +61,11 @@ const openIssues = async () => {
     const res = await fetch(url);
     const data = await res.json();
     hideLoading();
-    const openCards = data.data.filter(data => data.status=="open");
+    const openCards = data.data.filter(data => data.status == "open");
     displayIssues(openCards);
+    const count = issueCards.children.length;
+    issuesCount.innerText = count;
+
 
 }
 
@@ -64,22 +75,25 @@ const closedIssues = async () => {
     const res = await fetch(url);
     const data = await res.json();
     hideLoading();
-    const openCards = data.data.filter(data => data.status=="closed");
+    const openCards = data.data.filter(data => data.status == "closed");
     displayIssues(openCards);
+    const count = issueCards.children.length;
+    issuesCount.innerText = count;
+
 
 }
 
 const displayIssues = (cards) => {
 
     cards.forEach(issue => {
-    const card = document.createElement('div');
-    issue.status=="open" ? card.className = "shadow-md rounded-lg border-t-3 border-t-green-500" : 
-    card.className = "shadow-md rounded-lg border-t-3 border-t-purple-500";
-    card.innerHTML = `
+        const card = document.createElement('div');
+        issue.status == "open" ? card.className = "shadow-md rounded-lg border-t-3 border-t-green-500" :
+            card.className = "shadow-md rounded-lg border-t-3 border-t-purple-500";
+        card.innerHTML = `
     <div class="p-4 space-y-4">
                         <!-- Priority -->
                         <div class="flex items-center justify-between">
-                            ${issue.status=="open"?`<img class="w-[24px]" src="assets/Open-Status.png" alt="">`:`<img class="w-[24px]" src="assets/Closed- Status .png" alt="">`}
+                            ${issue.status == "open" ? `<img class="w-[24px]" src="assets/Open-Status.png" alt="">` : `<img class="w-[24px]" src="assets/Closed- Status .png" alt="">`}
                             
                             <h1 id="${issue.id}" class="bg-error/10 text-red-500 w-[80px] h-[24px] text-[12px] p-1 text-center rounded-3xl">${issue.priority.toUpperCase()}</h1>
                         </div>
@@ -95,10 +109,10 @@ const displayIssues = (cards) => {
 
                             <span class="bg-error/10 text-red-500 border border-red-200 h-[18px] text-[10px] font-medium py-[2px] px-[2px] text-center rounded-3xl">${issue.labels[0].toUpperCase()}</span>
 
-                            ${issue.labels[1]!= undefined ? `
+                            ${issue.labels[1] != undefined ? `
                                 <span class="bg-warning/10 text-yellow-600 border border-yellow-300 h-[18px] text-[10px] font-medium py-[2px] px-[2px] text-center rounded-3xl">
                                 ${issue.labels[1].toUpperCase()}
-                                </span>`:""}
+                                </span>`: ""}
                            
 
                         </div>
@@ -113,33 +127,28 @@ const displayIssues = (cards) => {
     
     `
 
-    issueCards.appendChild(card);
+        issueCards.appendChild(card);
 
 
 
-    // Priority Status background color and font color 
-    const issuePriority = document.getElementById(`${issue.id}`);
-    if(issuePriority.innerText == "MEDIUM"){
-        issuePriority.classList.remove("bg-error/10", "text-red-500","bg-base-300" , "text-gray-600");
-        issuePriority.classList.add("bg-warning/10" , "text-yellow-600");
-    }
-    else if (issuePriority.innerText == "LOW"){
-        issuePriority.classList.remove("bg-error/10", "text-red-500","bg-warning/10" , "text-yellow-600");
-        issuePriority.classList.add("bg-base-300" , "text-gray-600");
-    }
-     
+        // Priority Status background color and font color 
+        const issuePriority = document.getElementById(`${issue.id}`);
+        if (issuePriority.innerText == "MEDIUM") {
+            issuePriority.classList.remove("bg-error/10", "text-red-500", "bg-base-300", "text-gray-600");
+            issuePriority.classList.add("bg-warning/10", "text-yellow-600");
+        }
+        else if (issuePriority.innerText == "LOW") {
+            issuePriority.classList.remove("bg-error/10", "text-red-500", "bg-warning/10", "text-yellow-600");
+            issuePriority.classList.add("bg-base-300", "text-gray-600");
+        }
+
 
 
 
     });
-    
+
 }
 
 
 
-
-
-
-
-
-loadIssues ();
+loadIssues();
