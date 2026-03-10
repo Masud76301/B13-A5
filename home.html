@@ -29,14 +29,14 @@
 
 <body>
     <header>
-        <div class="flex justify-between navbar bg-base-100 shadow-sm px-[70px]">
+        <div class="flex flex-col md:flex-row gap-3 md:justify-between navbar bg-base-100 shadow-sm px-[70px]">
             <div class="flex items-center">
                 <img class="w-7" src="assets/github-logo.png" alt="">
-                <a class="btn btn-ghost text-xl">GitHub Issues Tracker</a>
+                <p class="btn btn-ghost text-xl">GitHub Issues Tracker</p>
             </div>
             <div class="flex gap-2">
 
-                <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
+                <input type="text" placeholder="Search" class="input input-bordered w-48 md:w-auto" />
                 <button class="btn btn-primary">+New Issue</button>
             </div>
         </div>
@@ -45,7 +45,7 @@
     <main class="mt-14 container mx-auto">
         <!-- Tab Section -->
         <section>
-            <div id="tab-btn" class="bg-base-100 shadow-[0_1px_6px_rgba(0,0,0,0.20)] p-6 space-x-2 rounded-lg">
+            <div id="tab-btn" class="flex justify-center md:justify-start bg-base-100 shadow-[0_1px_6px_rgba(0,0,0,0.20)] p-6 space-x-2 md:rounded-lg">
                 <button onclick="selectBtn('allBtn')" id="allBtn"
                     class="btn btn-primary text-[16px] w-[120px]">All</button>
                 <button onclick="selectBtn('openBtn')" id="openBtn" class="btn text-[16px] w-[120px]">Open</button>
@@ -135,7 +135,7 @@
              <!-- Open the modal using ID.showModal() method -->
 
             <dialog id="issue-modal" class="modal">
-                
+
             </dialog>
         </section>
     </main>

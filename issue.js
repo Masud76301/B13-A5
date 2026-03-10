@@ -51,7 +51,7 @@ showIssueModal = async (id) => {
                     <div class="flex gap-2 items-center">
                          <h1 class="${issue.data.status == "open" ? "bg-green-600" : "bg-red-600"} text-white text-[12px] px-7 py-[2px] text-center rounded-3xl">${issue.data.status}</h1>
                          <ul class="flex space-x-1  items-center list-inside list-disc">
-                            <li class="text-[12px] text-[#64748B]">Opened by ${issue.data.assignee}</li>
+                            <li class="text-[12px] text-[#64748B]">${issue.data.status} by ${issue.data.assignee}</li>
                             <li class="text-[12px] text-[#64748B]">${new Date(issue.data.updatedAt).toLocaleDateString("en-GB")}</li>
                          </ul>
                          
@@ -160,8 +160,8 @@ const displayIssues = (cards) => {
 
                         <!-- Card title and description -->
                         <div>
-                            <h1 class=" mb-2 text-[14px] font-semibold">${issue.title}</h1>
-                            <p class="text-[12px] font-normal text-[#64748B]">${issue.description}</p>
+                            <h1 class="line-clamp-1 mb-2 text-[14px] font-semibold">${issue.title}</h1>
+                            <p class="line-clamp-2 text-[12px] font-normal text-[#64748B]">${issue.description}</p>
                         </div>
 
                         <!-- labels -->
