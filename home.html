@@ -46,9 +46,11 @@
         <!-- Tab Section -->
         <section>
             <div id="tab-btn" class="bg-base-100 shadow-[0_1px_6px_rgba(0,0,0,0.20)] p-6 space-x-2 rounded-lg">
-                <button onclick="selectBtn('allBtn')" id="allBtn" class="btn btn-primary text-[16px] w-[120px]">All</button>
+                <button onclick="selectBtn('allBtn')" id="allBtn"
+                    class="btn btn-primary text-[16px] w-[120px]">All</button>
                 <button onclick="selectBtn('openBtn')" id="openBtn" class="btn text-[16px] w-[120px]">Open</button>
-                <button onclick="selectBtn('closedBtn')" id="closedBtn" class="btn text-[16px] w-[120px]">Closed</button>
+                <button onclick="selectBtn('closedBtn')" id="closedBtn"
+                    class="btn text-[16px] w-[120px]">Closed</button>
             </div>
         </section>
 
@@ -121,13 +123,20 @@
                     </div>
                 </div>
 
-                
+
             </div>
 
             <!-- Loading Spinner -->
-                <div id="load-spinner" class="hidden justify-center ite">
-                    <span class="loading loading-bars loading-xl"></span>
-                </div>
+            <div id="load-spinner" class="hidden justify-center ite">
+                <span class="loading loading-bars loading-xl"></span>
+            </div>
+
+
+             <!-- Open the modal using ID.showModal() method -->
+
+            <dialog id="issue-modal" class="modal">
+                
+            </dialog>
         </section>
     </main>
 
