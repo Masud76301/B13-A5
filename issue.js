@@ -2,6 +2,7 @@ const issueCards = document.getElementById('issue-cards');
 const loadingSpinner = document.getElementById('load-spinner');
 const issuesCount = document.getElementById('issues-count');
 const issueModal = document.getElementById('issue-modal');
+const input = document.getElementById('input-search');
 
 showLoading = () => {
     loadingSpinner.classList.remove("hidden");
@@ -168,17 +169,21 @@ const displayIssues = (cards) => {
                         <div class="pb-5 mt-4 ">
 
                             ${{
-                bug: `<span class="bg-error/10 text-red-500 border border-red-200 h-[18px] text-[10px] font-medium py-[2px] px-[4px] text-center rounded-3xl">${issue.labels[0].toUpperCase()}</span>`,
-                enhancement: `<span class="bg-[#DEFCE8] text-[#00A96E] border border-[#BBF7D0] h-[18px] text-[10px] font-medium py-[2px] px-[4px] text-center rounded-3xl">${issue.labels[0].toUpperCase()}</span>`,
-                documentation: `<span class="bg-blue-200 text-blue-600 border border-blue-300 h-[18px] text-[10px] font-medium py-[2px] px-[4px] text-center rounded-3xl">${issue.labels[0].toUpperCase()}</span>`
+                bug: `<span class="bg-error/10 text-red-500 border border-red-200 h-[18px] text-[10px] font-medium py-[2px] px-[4px] text-center rounded-3xl"><i class="fa-solid fa-bug mr-[2px]"></i> ${issue.labels[0].toUpperCase()}</span>`,
+                enhancement: `<span class="bg-[#DEFCE8] text-[#00A96E] border border-[#BBF7D0] h-[18px] text-[10px] font-medium py-[2px] px-[4px] text-center rounded-3xl"><i class="fa-regular fa-star mr-[2px]"></i>${issue.labels[0].toUpperCase()}</span>`,
+                documentation: `<span class="bg-blue-100 text-blue-600 border border-blue-300 h-[18px] text-[10px] font-medium py-[2px] px-[4px] text-center rounded-3xl"><i class="fa-brands fa-readme mr-[2px]"></i>${issue.labels[0].toUpperCase()}</span>`
             }[issue.labels[0]]
 
             }
 
-                            ${issue.labels[1] != undefined ? `
-                                <span class="bg-warning/10 text-yellow-600 border border-yellow-300 h-[18px] text-[10px] font-medium py-[2px] px-[4px] text-center rounded-3xl">
-                                ${issue.labels[1].toUpperCase()}
-                                </span>`: ""}
+                            ${issue.labels[1] != undefined ? 
+                                ({
+                            "help wanted":`<span class="bg-warning/10 text-yellow-600 border border-yellow-300 h-[18px] text-[10px] font-medium py-[2px] px-[4px] text-center rounded-3xl"><i class="fa-regular fa-life-ring mr-[2px]"></i>${issue.labels[1].toUpperCase()}
+                            </span>`,
+
+                            "enhancement": `<span class="bg-[#DEFCE8] text-[#00A96E] border border-[#BBF7D0] h-[18px] text-[10px] font-medium py-[2px] px-[4px] text-center rounded-3xl"><i class="fa-regular fa-star mr-[2px]"></i>${issue.labels[1].toUpperCase()}</span>`,
+
+                            "good first issue":`<span class="bg-purple-100 text-purple-700 border border-purple-300 h-[18px] text-[10px] font-medium py-[2px] px-[4px] text-center rounded-3xl"><i class="fa-solid fa-clover mr-[2px]"></i>${issue.labels[1].toUpperCase()}</span>`}[issue.labels[1]]): ""}
                            
 
                         </div>
@@ -223,7 +228,6 @@ loadIssues();
 document.getElementById("btn-search")
     .addEventListener("click", async () => {
         showLoading();
-        const input = document.getElementById('input-search');
         const searchValue = input.value.trim().toLowerCase();
         const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`;
         const res = await fetch(url);
