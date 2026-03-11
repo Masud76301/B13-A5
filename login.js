@@ -6,7 +6,7 @@ document.getElementById('sign-in-btn')
     const inputPin = document.getElementById('input-pin');
     const pin = inputPin.value;
 
-    if(userName == "admin" && pin == "admin1234"){
+    if(userName == "admin" && pin == "admin123"){
         alert('Signin Success');
         window.location.assign('home.html');
     }
